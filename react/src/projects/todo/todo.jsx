@@ -3,9 +3,10 @@ import "./todo.css";
 import { TodoForm } from "./todoForm";
 import { TodoList } from "./todoList";
 import { TodoDate } from "./todoDate";
+import { getTodo, setTodo } from "./todoLocalStorage";
 
 export const Todo = () => {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(() => getTodo());
 
   const handleFormSubmit = (inputValue) => {
     const { id, content, checked } = inputValue;
@@ -17,6 +18,8 @@ export const Todo = () => {
       return [...prev, { id, content, checked }];
     });
   };
+
+  setTodo(tasks);
 
   const handleDeleteTask = (task) => {
     const updatedTasks = tasks.filter((currTask) => currTask.content !== task);
