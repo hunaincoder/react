@@ -1,82 +1,73 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./todo.css";
-import { MdCheck, MdDeleteForever } from "react-icons/md";
+import { TodoForm } from "./todoForm";
+import { TodoList } from "./todoList";
+import { TodoDate } from "./todoDate";
 
 export const Todo = () => {
-  const [inputValue, setInputValue] = useState("");
   const [tasks, setTasks] = useState([]);
-  const [dateTime, setDateTime] = useState("");
-  const handleInputChange = (inputValue) => {
-    setInputValue(inputValue);
-  };
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-
-    if (!inputValue) return;
-
-    if (tasks.includes(inputValue)) {
-      setInputValue("");
-      return;
-    }
-
+  const handleFormSubmit = (inputValue) => {
+    const { id, content, checked } = inputValue;
+    if (!content) return;
+    // if (tasks.includes(content)) return;
+    const ifTodoContent = tasks.find((task) => task.content === content);
+    if (ifTodoContent) return;
     setTasks((prev) => {
-      return [...prev, inputValue];
+      return [...prev, { id, content, checked }];
     });
-    setInputValue("");
   };
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const date = new Date();
-      const formattedDate = date.toLocaleDateString();
-      const formattedTime = date.toLocaleTimeString();
+  const handleDeleteTask = (task) => {
+    const updatedTasks = tasks.filter((currTask) => currTask.content !== task);
+    setTasks(updatedTasks);
+    // console.log(task);
+    // setTasks((prev) => {
+    //   return prev.filter((t) => t !== task);
+    // });
+  };
 
-      setDateTime(`${formattedDate} - ${formattedTime}`);
-    }, 1000);
+  const handCheckedTask = (task) => {
+    const updatedTasks = tasks.map((currTask) => {
+      if (currTask.content === task) {
+        return { ...currTask, checked: !currTask.checked };
+      } else {
+        return currTask;
+      }
+    });
+    setTasks(updatedTasks);
+  };
 
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
+  const clearAlltaks = () => {
+    setTasks([]);
+  };
 
   return (
     <section className="todo-container">
       <header>
         <h1>Todo List</h1>
-        <h2 className="date-time">{dateTime}</h2>
+        <TodoDate />
       </header>
-      <section className="form">
-        <form onSubmit={handleFormSubmit}>
-          <div>
-            <input
-              type="text"
-              autoComplete="off"
-              onChange={(e) => handleInputChange(e.target.value)}
-              value={inputValue}
-            />
-          </div>
-          <div>
-            <button type="submit">Add Task</button>
-          </div>
-        </form>
-      </section>
+      <TodoForm onAddTodo={handleFormSubmit} />
       <section className="myUnORdList">
         <ul>
-          {tasks.map((currTask, index) => {
+          {tasks.map((currTask) => {
             return (
-              <li key={index} className="todo-item">
-                <span>{currTask}</span>
-                <button className="check-btn">
-                  <MdCheck />
-                </button>
-                <button className="delete-btn">
-                  <MdDeleteForever />
-                </button>
-              </li>
+              <TodoList
+                key={currTask.id}
+                data={currTask.content}
+                checked={currTask.checked}
+                onDeleteTask={handleDeleteTask}
+                onCheckedTask={handCheckedTask}
+              />
             );
           })}
         </ul>
+      </section>
+      <section>
+        <button className="clear-btn" onClick={clearAlltaks}>
+          clear All
+        </button>
       </section>
     </section>
   );
