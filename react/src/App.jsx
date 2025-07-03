@@ -5,6 +5,7 @@ import { ToggleSwitch } from "./projects/toggleSwitch/toggleSwitch";
 import "./components/netflix.css";
 import { Todo } from "./projects/todo/todo";
 import { CounterChallenge } from "./components/hooks/useState/counter";
+import { RegistrationForm } from "./components/hooks/useState/registrationFom";
 
 export const App = () => {
   return (
@@ -15,7 +16,8 @@ export const App = () => {
       {/* <LiftingUp /> */}
       {/* <ToggleSwitch /> */}
       {/* <Todo /> */}
-      <CounterChallenge />
+      {/* <CounterChallenge /> */}
+      <RegistrationForm />
     </section>
   );
 };
