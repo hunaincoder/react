@@ -6,6 +6,7 @@ import "./components/netflix.css";
 import { Todo } from "./projects/todo/todo";
 import { CounterChallenge } from "./components/hooks/useState/counter";
 import { RegistrationForm } from "./components/hooks/useState/registrationFom";
+import { Challenge } from "./components/hooks/useEffect/challenge";
 
 export const App = () => {
   return (
@@ -17,7 +18,8 @@ export const App = () => {
       {/* <ToggleSwitch /> */}
       {/* <Todo /> */}
       {/* <CounterChallenge /> */}
-      <RegistrationForm />
+      {/* <RegistrationForm /> */}
+      <Challenge />
     </section>
   );
 };
