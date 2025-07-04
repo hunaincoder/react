@@ -7,6 +7,7 @@ import { Todo } from "./projects/todo/todo";
 import { CounterChallenge } from "./components/hooks/useState/counter";
 import { RegistrationForm } from "./components/hooks/useState/registrationFom";
 import { Challenge } from "./components/hooks/useEffect/challenge";
+import { PokemonCard } from "./components/hooks/useEffect/pokemonCard";
 
 export const App = () => {
   return (
@@ -19,7 +20,8 @@ export const App = () => {
       {/* <Todo /> */}
       {/* <CounterChallenge /> */}
       {/* <RegistrationForm /> */}
-      <Challenge />
+      {/* <Challenge /> */}
+      <PokemonCard />
     </section>
   );
 };
