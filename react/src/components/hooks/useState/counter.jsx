@@ -22,7 +22,7 @@ export const CounterChallenge = () => {
       </p>
       <div>
         <label>
-          step :{" "}
+          step :
           <input
             type="number"
             value={step}
