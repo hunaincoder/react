@@ -9,6 +9,7 @@ import { RegistrationForm } from "./components/hooks/useState/registrationFom";
 import { Challenge } from "./components/hooks/useEffect/challenge";
 import { PokemonCard } from "./components/hooks/useEffect/pokemonCard";
 import { UseRef } from "./components/hooks/useRefs";
+import { UseRef2 } from "./components/hooks/useRefs/forwardRef";
 
 export const App = () => {
   return (
@@ -23,7 +24,8 @@ export const App = () => {
       {/* <RegistrationForm /> */}
       {/* <Challenge /> */}
       {/* <PokemonCard /> */}
-      <UseRef />
+      {/* <UseRef /> */}
+      <UseRef2 />
     </section>
   );
 };
