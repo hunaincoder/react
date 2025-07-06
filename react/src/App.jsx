@@ -10,6 +10,8 @@ import { Challenge } from "./components/hooks/useEffect/challenge";
 import { PokemonCard } from "./components/hooks/useEffect/pokemonCard";
 import { UseRef } from "./components/hooks/useRefs";
 import { UseRef2 } from "./components/hooks/useRefs/forwardRef";
+import { BioProvider } from "./components/hooks/contextApi";
+import { Home } from "./components/hooks/contextApi/home";
 
 export const App = () => {
   return (
@@ -25,7 +27,10 @@ export const App = () => {
       {/* <Challenge /> */}
       {/* <PokemonCard /> */}
       {/* <UseRef /> */}
-      <UseRef2 />
+      {/* <UseRef2 /> */}
+      <BioProvider>
+        <Home />
+      </BioProvider>
     </section>
   );
 };
