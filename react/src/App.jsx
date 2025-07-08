@@ -12,6 +12,11 @@ import { UseRef } from "./components/hooks/useRefs";
 import { UseRef2 } from "./components/hooks/useRefs/forwardRef";
 import { BioProvider } from "./components/hooks/contextApi";
 import { Home } from "./components/hooks/contextApi/home";
+import {
+  DarkLight,
+  ThemeProvider,
+} from "./components/hooks/contextApi/darkLight";
+import { ReducerTodo } from "./components/hooks/useReducer";
 
 export const App = () => {
   return (
@@ -28,9 +33,13 @@ export const App = () => {
       {/* <PokemonCard /> */}
       {/* <UseRef /> */}
       {/* <UseRef2 /> */}
-      <BioProvider>
+      {/* <BioProvider>
         <Home />
-      </BioProvider>
+      </BioProvider> */}
+      {/* <ThemeProvider>
+        <DarkLight />
+      </ThemeProvider> */}
+      <ReducerTodo />
     </section>
   );
 };
